@@ -37,22 +37,8 @@ function LoginCard() {
     console.log("Logging User:", values);
   }
 
-  // const passwordHandler = useMemo(
-  //   () => (event: React.ChangeEvent<HTMLInputElement>) => {
-  //     console.log("Password is :", event.target.value);
-  //     const pwd = event.target.value;
-  //     const res = pwd.match(
-  //       /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[+-_$@<>]).+$/
-  //     );
-  //     console.log("result is: ", res);
-  //     res?.length && setStrength((prev) => (prev = res.length));
-  //   },
-  //   [strength]
-  // );
-
   const passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     console.log("Password is :", event.target.value);
-    evaluateStrength(event.target.value);
     formik.handleChange(event);
   };
 

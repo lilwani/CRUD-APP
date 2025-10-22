@@ -32,8 +32,9 @@ function Register() {
     console.log("Registering user:", values);
   }
   return (
-    <div className="flex border-amber-900 border-2 rounded-xl justify-center h-full items-center">
-      <form className="flex flex-col gap-4 border-black border-2 rounded-xl p-4 ">
+    // <div className="flex border-cyan-800 border-2 rounded-xl justify-center max-h-screen items-center overflow-y-auto flex-grow">
+    <div className="flex justify-center items-start border-2 border-cyan-800 rounded-xl max-h-screen overflow-y-auto p-2">
+      <form className="flex flex-col gap-4 border-black border-2 rounded-xl p-4  m-4">
         <div>
           <h2 className="font-sans">
             Welcome to{" "}
@@ -123,7 +124,7 @@ function Register() {
           </div>
 
           {/* Contact */}
-          <div className="flex flex-row items-center gap-4">
+          <div className="flex flex-row items-baseline gap-4">
             <label className="w-24" htmlFor="contact">
               Contact
             </label>
@@ -135,6 +136,41 @@ function Register() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
+          </div>
+
+          {/* CurrentOrg */}
+          <div className="flex flex-row items-baseline gap-4">
+            <label className="w-24" htmlFor="currOrg">
+              Current Org
+            </label>
+            <input
+              type="text"
+              className="border-blue-400 border-2 rounded-lg py-1 flex-1 pl-3 pt-2 placeholder-gray-300 cursor-pointer shadow-sm shadow-blue-200 transition-shadow duration-300 ease-in-out hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="ABC Company Ltd"
+              id="currOrg"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+          </div>
+
+          {/* CTC */}
+          <div className="flex flex-row items-center gap-4 ">
+            <label className="w-24" htmlFor="currCTC">
+              Current CTC
+            </label>
+            <div className="flex items-stretch">
+              <span className="border-blue-400 border-2 rounded-lg pr-4 pl-1 py-1 rounded-r-none border-r-1 text-sm">
+                INR
+              </span>
+              <input
+                type="text"
+                className="border-blue-400 border-2 rounded-lg py-1 flex-1 pl-3 rounded-l-none border-l-1 placeholder-gray-300 cursor-pointer shadow-sm shadow-blue-200 transition-shadow duration-300 ease-in-out hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder="in lakhs per annum"
+                id="currCTC"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+            </div>
           </div>
 
           {/* Skill */}

@@ -1,5 +1,5 @@
-function Overview() {
-  return <div>Overview</div>;
+function FullOverview() {
+  return <div>FullOverview</div>;
 }
 
-export default Overview;
+export default FullOverview;
