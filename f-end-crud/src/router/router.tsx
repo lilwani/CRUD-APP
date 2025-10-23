@@ -26,6 +26,7 @@ const router = createBrowserRouter([
           { path: "dashboard", element: <Dashboard /> },
           { path: "applications", element: <Applications /> },
           { path: "editCard", element: null },
+          { path: "addCard", element: null },
         ],
       },
     ],

@@ -1,0 +1,23 @@
+function FullOverview() {
+  return (
+    <div className="flex border-2 border-gray-500 rounded-xl h-22 box-border p-4 flex-col gap-2">
+      <p>Overview</p>
+      <ul className="flex flex-row gap-12 ">
+        <li className="flex flex-row items-baseline">
+          <p className="text-sm pr-2">🔵Applied</p>
+          <b className="text-xl">3</b>
+        </li>
+        <li className="flex flex-row items-baseline">
+          <p className="text-sm pr-2">🟡Interview</p>
+          <b className="text-xl">3</b>
+        </li>
+        <li className="flex flex-row items-baseline">
+          <p className="text-sm pr-2">🔴Rejected</p>
+          <b className="text-xl">3</b>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+export default FullOverview;
