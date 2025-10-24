@@ -6,7 +6,7 @@ import FullOverview from "./Overview/FullOverview";
 
 function Dashboard() {
   return (
-    <div className="border-amber-300 border-2 rounded-2xl grow flex flex-col justify-start w-full items-center gap-8 overflow-y-auto box-border py-10">
+    <div className="border-black border rounded-2xl grow flex flex-col justify-start w-full items-center gap-8 overflow-y-auto box-border py-10">
       <div
         id="title"
         className="flex flex-row justify-between items-baseline box-border w-[80%] basis-1/6"

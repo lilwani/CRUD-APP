@@ -1,0 +1,11 @@
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+
+const reducers = combineReducers({});
+
+const store = configureStore({
+  reducer: reducers,
+});
+
+export type RootState = typeof store.getState;
+export type AppDispatch = typeof store.dispatch;
+export default store

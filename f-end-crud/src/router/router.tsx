@@ -18,15 +18,20 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Login /> },
-      { path: "login", element: <Login /> },
+      { index: true, path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       {
         element: <ProtectedRoute />,
         children: [
           { path: "dashboard", element: <Dashboard /> },
-          { path: "applications", element: <Applications /> },
-          { path: "editCard", element: null },
-          { path: "addCard", element: null },
+          {
+            path: "applications",
+            children: [
+              { path: "all", element: <Applications />, index: true },
+              { path: "editCard", element: null },
+              { path: "addCard", element: null },
+            ],
+          },
         ],
       },
     ],

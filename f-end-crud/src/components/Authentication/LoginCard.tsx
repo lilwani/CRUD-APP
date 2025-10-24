@@ -43,7 +43,7 @@ function LoginCard() {
   };
 
   return (
-    <div className="flex border-amber-900 border-2 rounded-xl justify-center h-full items-center">
+    <div className="flex justify-center h-full items-center">
       <form
         className="flex flex-col gap-4 border-black border-2 rounded-xl p-4"
         onSubmit={formik.handleSubmit}

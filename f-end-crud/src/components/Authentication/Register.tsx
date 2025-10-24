@@ -33,7 +33,7 @@ function Register() {
   }
   return (
     // <div className="flex border-cyan-800 border-2 rounded-xl justify-center max-h-screen items-center overflow-y-auto flex-grow">
-    <div className="flex justify-center items-start border-2 border-cyan-800 rounded-xl max-h-screen overflow-y-auto p-2">
+    <div className="flex justify-center items-start  max-h-screen overflow-y-auto p-2">
       <form className="flex flex-col gap-4 border-black border-2 rounded-xl p-4  m-4">
         <div>
           <h2 className="font-sans">
