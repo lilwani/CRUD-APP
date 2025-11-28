@@ -1,41 +1,96 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchAllApplications } from "../../apiThunks";
+import { fetchAllApplications, type FetchAllResponse } from "../../apiThunks";
+import type { RootState } from "../../store/store";
 
-interface AppDataType {
+export type AppStatus =
+  | "Interview"
+  | "Rejected"
+  | "Withdrawn"
+  | "Offered"
+  | "Applied";
+
+// export type AppAppliedVia =
+//   | "Company Portal"
+//   | "LinkedIn"
+//   | "Naukri"
+//   | "Referred"
+//   | "Miscellaneous";
+
+export interface AppDataType {
   appId: number;
   status: string;
   title: string;
   company: string;
   appDate: string;
   offeredSalRange: string | null;
-  expectedSalRange: string;
+  expectedSalRange: string | null;
   via: string;
   location: string;
-  notes: string;
+  notes: string | null;
   contactPerson: string;
-  url: string | null;
+  appURL: string | null;
   followUpDate: string | null;
 }
 
 interface AppStateType {
   isLoading: boolean;
   isError: boolean;
+  errorMessage: string | null;
   appData: AppDataType[] | [];
 }
 
 const initialState: AppStateType = {
   isLoading: false,
   isError: false,
+  errorMessage: null,
   appData: [],
 };
 
-const applications = createSlice({
-  name: "applications",
-  initialState: initialState,
+const applicationSlice = createSlice({
+  name: "apps",
+  initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(fetchAllApplications.pending, (state) => {
-      state.isLoading = true;
-    });
+    builder
+      .addCase(fetchAllApplications.pending, (state) => {
+        console.log("In pending state of fetchAllApplications");
+        state.isLoading = true;
+      })
+      .addCase(
+        fetchAllApplications.fulfilled,
+        (state: AppStateType, action) => {
+          console.log("In loading state of fetchAllApplications");
+
+          state.isLoading = false;
+          if (action.payload)
+            if (action.payload.responseStatus === "failure") {
+              state.isError = true;
+              state.errorMessage = action.payload.results.errorMessage;
+            } else {
+              if (
+                action.payload.responseStatus === "success" &&
+                action.payload.results.appDetails
+              ) {
+                state.appData = [...action.payload.results.appDetails];
+              }
+            }
+        }
+      )
+      .addCase(fetchAllApplications.rejected, (state: AppStateType, action) => {
+        if (action.error.message) {
+          state.isError = true;
+          state.errorMessage = action.error.message;
+        }
+        //check what does action.payload and action.error/action.error.message log
+      });
   },
 });
+
+export const getAllApplications = (state: RootState): AppDataType[] =>
+  state.apps.appData;
+
+// export const getFilteredApplications= (state:RootState):AppDataType[]=>{
+
+// }
+
+export default applicationSlice.reducer;

@@ -1,10 +1,13 @@
-import "./LoginCard.module.css";
-import { Link } from "react-router-dom";
+import styles from "./LoginCard.module.css";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { validate } from "./validations/loginValidation";
 import { usePassword } from "./hooks/usePassword";
 import { useEffect } from "react";
 import { useDebounce } from "../../hooks/useDebounce";
+import { useDispatch } from "react-redux";
+import type { AppDispatch } from "../../store/store";
+import { fetchAllApplications } from "../../apiThunks";
 
 export interface LoginFormikValidation {
   username: string;
@@ -14,6 +17,8 @@ export interface LoginFormikValidation {
 
 function LoginCard() {
   const { evaluateStrength, strength, getLabel } = usePassword();
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
   const formik = useFormik<LoginFormikValidation>({
     initialValues: {
       username: "",
@@ -30,18 +35,20 @@ function LoginCard() {
   useEffect(() => {
     console.log("In useFfect");
     formik.touched.password && evaluateStrength(debouncedPwd);
-    //  evaluateStrength(debouncedPwd);
   }, [debouncedPwd]);
 
   function handleLogin(values: LoginFormikValidation) {
     console.log("Logging User:", values);
+    dispatch(fetchAllApplications(values));
+    navigate("/applications");
   }
 
-  const passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("Password is :", event.target.value);
-    formik.handleChange(event);
-  };
+  // const passwordHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   console.log("Password is :", event.target.value);
+  //   formik.handleChange(event);
+  // };
 
+  console.log(formik.errors);
   return (
     <div className="flex justify-center h-full items-center">
       <form
@@ -76,6 +83,7 @@ function LoginCard() {
               id="username"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              value={formik.values.username}
             />
           </div>
 
@@ -89,6 +97,7 @@ function LoginCard() {
               id="email"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              value={formik.values.email}
             />
           </div>
 
@@ -100,8 +109,9 @@ function LoginCard() {
               className="border-blue-400 border-2 rounded-lg placeholder-gray-300  py-1 flex-1 pl-3 cursor-pointer shadow-sm shadow-blue-200 transition-shadow duration-300 ease-in-out hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               placeholder=" Atleast8_chars"
               id="password"
-              onChange={passwordHandler}
+              onChange={formik.handleChange}
               onBlur={formik.handleBlur}
+              value={formik.values.password}
             />
           </div>
         </div>
@@ -123,6 +133,7 @@ function LoginCard() {
             type="button"
             className="px-4 py-2 bg-cyan-700 text-white rounded-xl hover:cursor-pointer"
             value="Reset"
+            onClick={() => formik.resetForm()}
           />
         </div>
 

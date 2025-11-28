@@ -13,7 +13,7 @@ export const validate = (values: LoginFormikValidation) => {
 
   !values.email
     ? (errors.email = "Email Required")
-    : values.email.match(regex) && (errors.email = "Incorrect email");
+    : !values.email.match(regex) && (errors.email = "Incorrect email");
 
   !values.password
     ? (errors.password = "Password Required")

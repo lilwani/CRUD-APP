@@ -1,8 +1,10 @@
-function MiscFilter() {
+import type { IFilterProps } from "../Applications";
+
+function MiscFilter({ updateFilter }: IFilterProps) {
   return (
     <div className="flex w-[15%] justify-between p-2 box-border">
       <select className="border rounded-2xl border-black py-1 bg-gray-100 text-sm text-center">
-        <option>Date Applied</option>
+        <option defaultChecked>Date Applied</option>
         <option>Status</option>
         <option>Company</option>
         <option>Title</option>

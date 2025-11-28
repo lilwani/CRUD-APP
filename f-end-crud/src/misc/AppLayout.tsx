@@ -9,7 +9,8 @@ function AppLayout() {
   return (
     <div className="flex flex-col border-red-500 border-2 h-full w-full rounded-2xl gap-2 overflow-hidden items-center">
       {location.pathname.includes("login") ||
-      location.pathname.includes("register") ? null : (
+      location.pathname.includes("register") ||
+      location.pathname === "/" ? null : (
         <Navbar />
       )}
 

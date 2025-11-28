@@ -1,0 +1,11 @@
+{
+  "fullName": "Yash Lilwani",
+  "age": 29,
+  "email": "y@gm.com",
+  "address": "Here, world flat 4",
+  "contact": "1267482927",
+  "currOrg": "ABC Comp Ltd",
+  "curSalary": "15,00,000",
+  "skillSet": ["React.js", "Express.js", "Node.js", "MSSQL", "Apache Kafka"],
+  "userId": 1
+}

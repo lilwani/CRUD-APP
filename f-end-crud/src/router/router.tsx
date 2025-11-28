@@ -1,5 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
+
+const ApplicationLayout = lazy(
+  () => import("../components/Applications/ApplicationLayout")
+);
 const Register = lazy(() => import("../components/Authentication/Register"));
 
 const App = lazy(() => import("../App"));
@@ -18,7 +22,7 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { index: true, element: <Login /> },
-      { index: true, path: "login", element: <Login /> },
+      { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
       {
         element: <ProtectedRoute />,
@@ -26,8 +30,9 @@ const router = createBrowserRouter([
           { path: "dashboard", element: <Dashboard /> },
           {
             path: "applications",
+            element: <ApplicationLayout />,
             children: [
-              { path: "all", element: <Applications />, index: true },
+              { element: <Applications />, index: true },
               { path: "editCard", element: null },
               { path: "addCard", element: null },
             ],
