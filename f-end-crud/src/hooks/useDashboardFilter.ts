@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import type { AppDataType } from "../components/Applications/appSlice";
 
 export interface FilteredData {
-  recentApps: AppDataType[] | [];
+  recentApps: AppDataType[];
   activeApps: number;
   interviewApps: number;
-  followUps: AppDataType[] | [];
+  followUps: AppDataType[];
   respRate: number;
   appliedApps: number;
   rejectApps: number;
@@ -29,17 +29,37 @@ const useDashboardFilter = (allApps: AppDataType[]) => {
     const lastWeek = new Date();
     lastWeek.setDate(today.getDate() - 7);
 
-    const recentApps = allApps.filter((item) => {
-      return new Date(item.appDate) > lastWeek;
-    });
+    const recentApps = [];
+    let activeApps = 0,
+      interviewApps = 0,
+      appliedApps = 0,
+      rejectApps = 0,
+      respCount = 0;
 
-    const activeApps = allApps.filter(
-      (item) => item.status === "Reviewing"
-    ).length;
+    for (const item of allApps) {
+      new Date(item.appDate) > lastWeek && recentApps.push(item);
 
-    const interviewApps = allApps.filter(
-      (item) => item.status === "Interview"
-    ).length;
+      switch (item.status) {
+        case "Reviewing":
+          activeApps++;
+          break;
+        case "Interview":
+          interviewApps++;
+          break;
+        case "Applied":
+          appliedApps++;
+          break;
+        case "Rejected":
+          rejectApps++;
+          break;
+      }
+
+      !nonResp.includes(item.status) && respCount++;
+    }
+
+    if (respCount) {
+      respCount = Number(((respCount / allApps.length) * 100).toFixed(2));
+    }
 
     const followUps = [...allApps]
       .sort((first, second) => {
@@ -49,28 +69,12 @@ const useDashboardFilter = (allApps: AppDataType[]) => {
       })
       .slice(0, 3);
 
-    let respRate = allApps.filter(
-      (item) => !nonResp.includes(item.status)
-    ).length;
-
-    if (respRate) {
-      respRate = Number(((respRate / allApps.length) * 100).toFixed(2));
-    }
-
-    const appliedApps = allApps.filter(
-      (item) => item.status === "Applied"
-    ).length;
-
-    const rejectApps = allApps.filter(
-      (item) => item.status === "Rejected"
-    ).length;
-
     setFilteredData({
       recentApps,
       activeApps,
       followUps,
       interviewApps,
-      respRate,
+      respRate: respCount,
       appliedApps,
       rejectApps,
     });
