@@ -12,6 +12,8 @@ function FullCard({ application }: IProps) {
     Withdrawn: "bg-grey-200",
     Offered: "bg-green-200",
     Applied: "bg-orange-200",
+    Referred:'bg-blue-200',
+    Reviewing:'bg-emerald-100'
   };
 
   return (

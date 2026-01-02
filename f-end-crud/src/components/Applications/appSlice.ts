@@ -2,12 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchAllApplications, type FetchAllResponse } from "../../apiThunks";
 import type { RootState } from "../../store/store";
 
-export type AppStatus =
-  | "Interview"
-  | "Rejected"
-  | "Withdrawn"
-  | "Offered"
-  | "Applied";
+export const allAppSatus = [
+  "Interview",
+  "Rejected",
+  "Withdrawn",
+  "Offered",
+  "Applied",
+  "Referred",
+  "Reviewing",
+] as const;
+
+export type AppStatus = (typeof allAppSatus)[number];
 
 // export type AppAppliedVia =
 //   | "Company Portal"
@@ -29,7 +34,7 @@ export interface AppDataType {
   notes: string | null;
   contactPerson: string;
   appURL: string | null;
-  followUpDate: string | null;
+  followUpDate: string;
 }
 
 interface AppStateType {

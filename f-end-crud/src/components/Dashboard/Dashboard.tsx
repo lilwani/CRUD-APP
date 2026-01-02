@@ -3,8 +3,12 @@ import ShortOverview from "./Overview/ShortOverview";
 import RecentApps from "./RecentApps/RecentApps";
 import FollowUps from "./FollowUps/FollowUps";
 import FullOverview from "./Overview/FullOverview";
+import { useSelector } from "react-redux";
+import { getAllApplications, type AppDataType } from "../Applications/appSlice";
 
 function Dashboard() {
+  const allApps: AppDataType[] = useSelector(getAllApplications);
+
   return (
     <div className="border-black border rounded-2xl grow flex flex-col justify-start w-full items-center gap-8 overflow-y-auto box-border py-10">
       <div
@@ -25,14 +29,14 @@ function Dashboard() {
         </Link>
       </div>
       <div className=" w-[80%] basis-2/6">
-        <ShortOverview />
+        <ShortOverview allApps={allApps} />
       </div>
       <div className="flex flex-row w-[80%] justify-between gap-4 basis-3/6">
-        <RecentApps />
-        <FollowUps />
+        <RecentApps allApps={allApps} />
+        <FollowUps allApps={allApps} />
       </div>
       <div className="w-[80%] basis-1/6">
-        <FullOverview />
+        <FullOverview allApps={allApps} />
       </div>
     </div>
   );
