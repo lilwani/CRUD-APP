@@ -12,7 +12,17 @@ export const allAppSatus = [
   "Reviewing",
 ] as const;
 
+export const allSource = [
+  "Company Portal",
+  "LinkedIn",
+  "Naukri",
+  "Referred",
+  "Miscellaneous",
+] as const;
+
 export type AppStatus = (typeof allAppSatus)[number];
+
+export type AppSource = (typeof allSource)[number];
 
 // export type AppAppliedVia =
 //   | "Company Portal"
