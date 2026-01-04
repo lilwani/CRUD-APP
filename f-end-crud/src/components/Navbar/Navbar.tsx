@@ -21,6 +21,12 @@ function Navbar() {
       >
         Analytics
       </Link>
+      <Link
+        to="/user"
+        className="hover:bg-gray-400 hover:text-white hover:text-xl flex justify-center items-center text-lg bg-gray-200 border-2 border-gray-700 rounded-lg h-full flex-1"
+      >
+        Profile
+      </Link>
     </div>
   );
 }

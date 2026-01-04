@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAllApplications } from "../../apiThunks";
+import type { RootState } from "../../store/store";
 
 export interface UserDetailsType {
   userId: number;
@@ -62,5 +63,9 @@ const userSlice = createSlice({
       );
   },
 });
+
+export const userDetails = (state: RootState) => {
+  return state.user.userData;
+};
 
 export default userSlice.reducer;

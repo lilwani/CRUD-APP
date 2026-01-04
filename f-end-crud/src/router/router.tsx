@@ -15,6 +15,11 @@ const Login = lazy(() => import("../components/Authentication/Login"));
 const ProtectedRoute = lazy(
   () => import("../components/Authentication/ProtectedRouter")
 );
+const UserLayout = lazy(() => import("../components/User/UserLayout"));
+const DisplayProfile = lazy(
+  () => import("../components/User/DisplayProfile/DisplayProfile")
+);
+const EditProfile = lazy(() => import("../components/User/EditProfile"));
 
 const router = createBrowserRouter([
   {
@@ -28,6 +33,14 @@ const router = createBrowserRouter([
         element: <ProtectedRoute />,
         children: [
           { path: "dashboard", element: <Dashboard /> },
+          {
+            path: "user",
+            element: <UserLayout />,
+            children: [
+              { element: <DisplayProfile />, index: true },
+              { path: "editProfile", element: <EditProfile /> },
+            ],
+          },
           {
             path: "applications",
             element: <ApplicationLayout />,
