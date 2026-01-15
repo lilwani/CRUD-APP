@@ -1,10 +1,3 @@
-import { Link } from "react-router-dom";
-import {
-  PlusIcon,
-  UserCircleIcon,
-  AtSymbolIcon,
-} from "@heroicons/react/24/outline";
-import { MapPinIcon } from "@heroicons/react/24/solid";
 import { useSelector } from "react-redux";
 import { userDetails } from "../userSlice";
 import OverviewProfile from "./OverviewProfile";

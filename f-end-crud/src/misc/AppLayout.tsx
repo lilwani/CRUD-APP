@@ -1,7 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
-import Applications from "../components/Applications/Applications";
-import Dashboard from "../components/Dashboard/Dashboard";
 
 function AppLayout() {
   const location = useLocation();
