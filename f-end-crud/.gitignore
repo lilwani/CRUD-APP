@@ -1,3 +1,7 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
 # Logs
 logs
 *.log
@@ -7,18 +11,34 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+# Build output
 dist
 dist-ssr
+build
 *.local
 
+# Vite cache
+.vite
+.cache
+
 # Editor directories and files
-.vscode/*
+.vscode/
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+*.swp
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Lock files (optional - comment out if you want to commit these)
+# package-lock.json
+# yarn.lock
+

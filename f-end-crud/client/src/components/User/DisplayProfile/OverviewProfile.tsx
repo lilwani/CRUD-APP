@@ -23,7 +23,7 @@ const OverviewProfile = () => {
                 className={`align-middle ${styles.subdata} tracking-widest md:text-xs`}
               >
                 {" "}
-                yashlilwani18@gmail.com
+                <b className="tracking-widest">Senior Developer</b>
               </span>
             </p>
             <p className="text-xs "></p>
@@ -33,7 +33,7 @@ const OverviewProfile = () => {
                 className={`align-middle ${styles.subdata} tracking-widest md:text-xs`}
               >
                 {" "}
-                Maharashtra, India
+                <b>Maharashtra, India</b>
               </span>
             </p>
           </div>

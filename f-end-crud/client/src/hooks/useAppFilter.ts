@@ -13,6 +13,7 @@ export interface FilterType {
   order: string;
 }
 
+
 const useAppFilter = (allApps: AppDataType[]) => {
   const [filters, setFilters] = useState<FilterType>({
     search: "",
