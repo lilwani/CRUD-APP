@@ -1,11 +1,63 @@
-{
-  "fullName": "Yash Lilwani",
-  "age": 29,
-  "email": "y@gm.com",
-  "address": "Here, world flat 4",
-  "contact": "1267482927",
-  "currOrg": "ABC Comp Ltd",
-  "curSalary": "15,00,000",
-  "skillSet": ["React.js", "Express.js", "Node.js", "MSSQL", "Apache Kafka"],
-  "userId": 1
-}
+[
+  {
+    "fullName": "Yash Lilwani",
+    "age": 29,
+    "email": "y@gm.com",
+    "address": "Here, world flat 4",
+    "contact": "1267482927",
+    "currOrg": "ABC Comp Ltd",
+    "curSalary": "15,00,000",
+    "skillSet": ["React.js", "Express.js", "Node.js", "MSSQL", "Apache Kafka"],
+    "userId": 1
+  },
+  {
+    "fullName": "Anita Sharma",
+    "age": 32,
+    "email": "as@u.com",
+    "address": "Sunrise Apartments, Flat 12, Pune",
+    "contact": "9876543210",
+    "currOrg": "TechNova Solutions",
+    "curSalary": "12,50,000",
+    "skillSet": ["Angular", "TypeScript", "MongoDB", "AWS", "Docker"],
+    "userId": 2
+  },
+  {
+    "fullName": "Rahul Verma",
+    "age": 27,
+    "email": "rv@u.com",
+    "address": "Green Valley, Block B, Delhi",
+    "contact": "9123456789",
+    "currOrg": "NextGen Systems",
+    "curSalary": "9,80,000",
+    "skillSet": ["React.js", "Redux", "GraphQL", "PostgreSQL", "Kubernetes"],
+    "userId": 3
+  },
+  {
+    "fullName": "Sneha Patil",
+    "age": 35,
+    "email": "sp@u.com",
+    "address": "Ocean View Towers, Mumbai",
+    "contact": "9988776655",
+    "currOrg": "CloudWare Pvt Ltd",
+    "curSalary": "18,20,000",
+    "skillSet": ["Vue.js", "Node.js", "MySQL", "RabbitMQ", "Terraform"],
+    "userId": 4
+  },
+  {
+    "fullName": "Arjun Mehta",
+    "age": 30,
+    "email": "am@u.com",
+    "address": "Lakefront Residency, Bangalore",
+    "contact": "9012345678",
+    "currOrg": "Innovatech Labs",
+    "curSalary": "14,00,000",
+    "skillSet": [
+      "React Native",
+      "Express.js",
+      "Firebase",
+      "ElasticSearch",
+      "Jenkins"
+    ],
+    "userId": 5
+  }
+]

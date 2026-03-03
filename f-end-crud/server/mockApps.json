@@ -1,0 +1,79 @@
+{
+  "apps": [
+    {
+      "appId": 1,
+      "status": "Interview",
+      "title": "Sr. Developer",
+      "company": "CDE Firm",
+      "appDate": "2026-01-01",
+      "offeredSalRange": "18-22 LPA",
+      "expectedSalRange": "25-28 LPA",
+      "via": "Referred",
+      "location": "Pune",
+      "notes": "Referred by XYZ guy",
+      "contactPerson": "Prashanth",
+      "appURL": "http://workday.careers.CDEPlace.com/login",
+      "followUpDate": "2025-10-25"
+    },
+    {
+      "appId": 2,
+      "status": "Reviewing",
+      "title": "Sr. Developer II",
+      "company": "JHG Associates",
+      "appDate": "2025-10-15",
+      "offeredSalRange": "18-20 LPA",
+      "expectedSalRange": "25-28 LPA",
+      "via": "Naukri",
+      "location": "Pune",
+      "notes": "React dev role",
+      "contactPerson": "Prashanth",
+      "appURL": "http://workday.careers.JHGThing.com/login",
+      "followUpDate": "2025-10-25"
+    },
+    {
+      "appId": 3,
+      "status": "Rejected",
+      "title": "Sr. Full Stack Developer I",
+      "company": "IKH Comp",
+      "appDate": "2025-11-25",
+      "offeredSalRange": "20-24 LPA",
+      "expectedSalRange": "25-28 LPA",
+      "via": "LinkedIn",
+      "location": "Pune/Hyderabad",
+      "notes": "Full stack - React, Node and Python",
+      "contactPerson": "Eddie",
+      "appURL": "http://workday.careers.IKHltd.com/login",
+      "followUpDate": "2025-11-30"
+    },
+    {
+      "appId": 4,
+      "status": "Interview",
+      "title": "React Full Stack Developer",
+      "company": "JHG Associates",
+      "appDate": "2023-12-05",
+      "offeredSalRange": "18-20 LPA",
+      "expectedSalRange": "25-28 LPA",
+      "via": "Naukri",
+      "location": "Pune",
+      "notes": "React dev role",
+      "contactPerson": "Prashanth",
+      "appURL": "http://workday.careers.JHGThing.com/login",
+      "followUpDate": "2025-10-25"
+    },
+    {
+      "appId": 5,
+      "status": "Withdrawn",
+      "title": "AWS + Node Developer ",
+      "company": "JHG Associates",
+      "appDate": "2025-10-15",
+      "offeredSalRange": "18-22 LPA",
+      "expectedSalRange": "25-28 LPA",
+      "via": "Naukri",
+      "location": "Pune",
+      "notes": "React dev role with Node js",
+      "contactPerson": "",
+      "appURL": "http://workday.careers.JHGThing.com/login",
+      "followUpDate": "2025-10-25"
+    }
+  ]
+}
