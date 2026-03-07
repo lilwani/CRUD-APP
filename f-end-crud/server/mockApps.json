@@ -13,7 +13,8 @@
       "notes": "Referred by XYZ guy",
       "contactPerson": "Prashanth",
       "appURL": "http://workday.careers.CDEPlace.com/login",
-      "followUpDate": "2025-10-25"
+      "followUpDate": "2025-10-25",
+      "userId": 1
     },
     {
       "appId": 2,
@@ -28,7 +29,8 @@
       "notes": "React dev role",
       "contactPerson": "Prashanth",
       "appURL": "http://workday.careers.JHGThing.com/login",
-      "followUpDate": "2025-10-25"
+      "followUpDate": "2025-10-25",
+      "userId": 1
     },
     {
       "appId": 3,
@@ -43,7 +45,8 @@
       "notes": "Full stack - React, Node and Python",
       "contactPerson": "Eddie",
       "appURL": "http://workday.careers.IKHltd.com/login",
-      "followUpDate": "2025-11-30"
+      "followUpDate": "2025-11-30",
+      "userId": 1
     },
     {
       "appId": 4,
@@ -58,7 +61,8 @@
       "notes": "React dev role",
       "contactPerson": "Prashanth",
       "appURL": "http://workday.careers.JHGThing.com/login",
-      "followUpDate": "2025-10-25"
+      "followUpDate": "2025-10-25",
+      "userId": 1
     },
     {
       "appId": 5,
@@ -73,7 +77,8 @@
       "notes": "React dev role with Node js",
       "contactPerson": "",
       "appURL": "http://workday.careers.JHGThing.com/login",
-      "followUpDate": "2025-10-25"
+      "followUpDate": "2025-10-25",
+      "userId": 1
     }
   ]
 }

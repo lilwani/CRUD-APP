@@ -2,6 +2,8 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { logger } from "../utilities/logger.js";
 import { AppError } from "../utilities/AppError.js";
+import usersDB from "../mockUsers.json";
+import appsDB from "../mockApps.json";
 dotenv.config();
 
 const getUsers = async (req, res, next) => {
@@ -30,6 +32,66 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-const addNewUser = (req) => {};
+const loginUser = (req, res, next) => {
+  try {
+    const { email, pass } = req.body;
+    logger.info(`loginUser(): Log in user `);
+    const userInDB = usersDB.users.find((user) => user.email === email);
+    if (userInDB) {
+      const allUserApps = appsDB.apps.filter(
+        (apps) => apps.userId === userInDB.userId,
+      );
+      logger.info(
+        `loginUser(): User with userId - ${userInDB.userId} - found with details - ${JSON.stringify(allUserApps)} `,
+      );
+      res.locals.details = allUserApps;
+      return next();
+    } else {
+      throw new AppError(`User with ${email} not found`, 403);
+    }
+  } catch (error) {
+    logger.error(`loginUser(): Login Exception - ${JSON.stringify(error)}`);
+    return next(
+      error instanceof AppError
+        ? error
+        : new AppError(
+            `Login Error - ${JSON.stringify(error)}`,
+            error.statusCode ?? 500,
+            error,
+          ),
+    );
+  }
+};
 
-export { getUsers, addNewUser };
+const registerUser = (req, res, next) => {
+  try {
+    const { email, pass } = req.body;
+    logger.info(`registerUser(): Log in user `);
+    const userInDB = usersDB.users.find((user) => user.email === email);
+    if (userInDB) {
+      const allUserApps = appsDB.apps.filter(
+        (apps) => apps.userId === userInDB.userId,
+      );
+      logger.info(
+        `registerUser(): User with userId - ${userInDB.userId} - found with details - ${JSON.stringify(allUserApps)} `,
+      );
+      res.locals.details = allUserApps;
+      return next();
+    } else {
+      throw new AppError(`User with ${email} not found`, 403);
+    }
+  } catch (error) {
+    logger.error(`registerUser(): Login Exception - ${JSON.stringify(error)}`);
+    return next(
+      error instanceof AppError
+        ? error
+        : new AppError(
+            `Login Error - ${JSON.stringify(error)}`,
+            error.statusCode ?? 500,
+            error,
+          ),
+    );
+  }
+};
+
+export { getUsers, loginUser, registerUser };
