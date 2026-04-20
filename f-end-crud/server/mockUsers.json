@@ -15,7 +15,8 @@
         "MSSQL",
         "Apache Kafka"
       ],
-      "userId": 1
+      "userId": 1,
+      "id": "4fd7"
     },
     {
       "fullName": "Anita Sharma",
@@ -26,7 +27,8 @@
       "currOrg": "TechNova Solutions",
       "curSalary": "12,50,000",
       "skillSet": ["Angular", "TypeScript", "MongoDB", "AWS", "Docker"],
-      "userId": 2
+      "userId": 2,
+      "id": "d068"
     },
     {
       "fullName": "Rahul Verma",
@@ -37,7 +39,8 @@
       "currOrg": "NextGen Systems",
       "curSalary": "9,80,000",
       "skillSet": ["React.js", "Redux", "GraphQL", "PostgreSQL", "Kubernetes"],
-      "userId": 3
+      "userId": 3,
+      "id": "79b8"
     },
     {
       "fullName": "Sneha Patil",
@@ -48,7 +51,8 @@
       "currOrg": "CloudWare Pvt Ltd",
       "curSalary": "18,20,000",
       "skillSet": ["Vue.js", "Node.js", "MySQL", "RabbitMQ", "Terraform"],
-      "userId": 4
+      "userId": 4,
+      "id": "fdb3"
     },
     {
       "fullName": "Arjun Mehta",
@@ -65,7 +69,26 @@
         "ElasticSearch",
         "Jenkins"
       ],
-      "userId": 5
+      "userId": 5,
+      "id": "8a44"
+    },
+    {
+      "id": "g3ghf34",
+      "fullName": "Yash Bhat",
+      "age": 29,
+      "email": "blah@gm.com",
+      "address": "Here, there somewhere 6",
+      "contact": "5467346571",
+      "currOrg": "CVD Comp Ltd",
+      "curSalary": "25,00,000",
+      "skillSet": [
+        "React.js",
+        "Express.js",
+        "Node.js",
+        "MSSQL",
+        "Apache Kafka"
+      ],
+      "userId": 6
     }
   ]
 }

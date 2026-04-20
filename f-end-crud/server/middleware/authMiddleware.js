@@ -1,48 +1,48 @@
-import { logger } from "../utilities/logger";
-import { v6 as v6uuid } from "uuid";
+import { logger } from "../utilities/logger.js";
 import jwt from "jsonwebtoken";
-import { AppError } from "../utilities/AppError";
+import { AppError } from "../utilities/AppError.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-const signupToken = (req, res, next) => {
-  const funcName = "signupToken():";
-  try {
-    const { email } = req.body;
-    if (!email) throw new AppError(`${funcName} No Email received`, 400);
-    logger.info(`${funcName} Signing up new user`);
-    const newUserId = v6uuid();
-    logger.info(`${funcName} New User id - ${newUserId}`);
-    const jwtPayload = { userId: newUserId, email };
-    const newAccessToken = generateAccessToken(jwtPayload, newUserId);
-    res.locals.details = { accessToken: newAccessToken, userId: newUserId };
-    return next();
-  } catch (error) {
-    const errorMessage = `${funcName} Signup Token creation exception - ${JSON.stringify(error)}`;
-    logger.error(errorMessage);
-    return next(
-      error instanceof AppError
-        ? error
-        : new AppError(errorMessage, error.statusCode ?? 500, error),
-    );
-  }
-};
-
-const generateAccessToken = (payload, newUserId) => {
+const generateToken = (payload, userId, tokenType = null) => {
   const funcName = `generateAccessToken():`;
+  const tokenFor = tokenType?.split("_")[0] ?? "access";
   try {
-    logger.info(`${funcName} Generating Access Token for ${newUserId}`);
-    const newAccessToken = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, {
-      expiresIn: 15,
+    logger.info(`${funcName} Generating ${tokenFor} Token for ${userId}`);
+    const newToken = jwt.sign(payload, process.env[tokenType], {
+      expiresIn: tokenType === "REFRESH_TOKEN_SECRET" ? "1d" : "15m",
     });
-    return newAccessToken;
+    return newToken;
   } catch (error) {
-    const errorMessage = `${funcName} Could not generate access token - ${JSON.stringify(error)}`;
+    const errorMessage = `${funcName} Could not generate ${tokenFor} token - ${JSON.stringify(error)}`;
     logger.error(errorMessage);
+    /*
+        Doing a throw in a child function would take control to catch of parent. 
+        If there was no catch in child then it would go to parent catch   
+    */
     throw new AppError(errorMessage, 500, error);
   }
 };
 
+const verifyToken = (req, _res, next) => {
+  const funcName = "verifyToken():";
+  try {
+    logger.info(`${funcName} Verify the request`);
+    const headers = req.headers["authorization"];
+    if (!headers) throw new AppError(`${funcName} No token received`, 400);
+    const token = headers.split(" ")[1];
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    req.user = decoded.userId;
+    next();
+  } catch (error) {
+    const errorMessage = `${funcName} Failed to authenticate token - ${JSON.stringify(error)}`;
+    logger.error(errorMessage);
+    next(
+      error instanceof AppError
+        ? error
+        : new AppError(errorMessage, error.statusCode ?? 403, error),
+    );
+  }
+};
 
-
-export { signupToken };
+export { generateToken, verifyToken };
